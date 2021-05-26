@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>ColorClicker! </title>
+    <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
     <script type="text/javascript">
-
-        function color() {
+        function random_color() {
             var rgb = ['a', 'b', 'c', 'd', 'e', 'f', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-            color = '#'  // Esto es lo que se va a retornar
-            for (var i = 0; i < 6; i++) {
+            color = '#'
+            for (var i = 0; i <6; i++) {
                 x = Math.floor((Math.random() * 16))
                 color += rgb[x];
             }
@@ -20,21 +15,21 @@
         }
         $(document).ready(function () {
             $('body').click(function () {
-                $(this).css("background-color", "" + color() + "");
+                $(this).css("background-color", "" + random_color() + "");
             })
             $('#large_box').click(function () {
                 event.stopPropagation();
-                $(this).css("background-color", "" + color() + "");
+                $(this).css("background-color", "" + random_color() + "");
                 $("#large_box div").css("background-color", "" + random_color() + "");
             })
             $('.side_box').click(function (event) {
                 event.stopPropagation();
-                $(this).siblings().css("background-color", "" + color() + "");
+                $(this).siblings().css("background-color", "" + random_color() + "");
 
             })
             $('.middle_box').click(function (event) {
                 event.stopPropagation();
-                $("#large_box").css("background-color", "" + color() + "");
+                $("#large_box").css("background-color", "" + random_color() + "");
             })
         });
     </script>
@@ -43,9 +38,7 @@
             font-family: sans-serif;
         }
 
-        h2,
-        h1,
-        h3 {
+        h1, h2, h3 {
             text-align: center;
         }
 
@@ -66,7 +59,19 @@
         }
     </style>
 </head>
-<body>
-</body>
 
+<body>
+    <h1>ColorClicker! Web </h1>
+    <div id='large_box'>
+        <div class='side_box'></div>
+        <div class='middle_box'></div>
+        <div class='side_box'></div>
+    </div>
+    <h2>Reglas</h2>
+    <h3>1.¡Al hacer clic en el cuadro grande, se deberían cambiar los colores de fondo tanto del cuadro pequeño como del
+        grande!</h3>
+    <h3>2. ¡Al hacer clic en el cuadro pequeño del medio debería cambiar el color del cuadro grande!</h3>
+    <h3>3. Hacer clic en el cuadro pequeño de la izquierda o la derecha debería cambiar el color de los hermanos de ese
+        cuadro</h3>
+</body>
 </html>
